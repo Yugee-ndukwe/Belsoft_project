@@ -4,37 +4,43 @@ import '../Main/main.css';
 import React, { useEffect, useRef } from 'react';
 
 export default function Main(){
-    const sections = useRef([]);
-
+    
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
+                        if (entry.target.classList.contains('slide-left')) {
+                            entry.target.classList.add('animate__animated', 'animate__slideInLeft');
+                        } else if (entry.target.classList.contains('slide-right')) {
+                            entry.target.classList.add('animate__animated', 'animate__slideInRight');
+                        }
+                        // Stop observing the element after the animation is applied
+                        observer.unobserve(entry.target);
                     }
                 });
             },
-            { threshold: 0.1 }
+            { threshold: 0.1 } // Trigger when 10% of the element is visible
         );
 
-        sections.current.forEach((section) => {
-            if (section) observer.observe(section);
-        });
+        // Select all elements to animate
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        animateElements.forEach((element) => observer.observe(element));
 
-        return () => {
-            sections.current.forEach((section) => {
-                if (section) observer.unobserve(section);
-            });
-        };
+        // Cleanup the observer on component unmount
+        return () => observer.disconnect();
     }, []);
+
+    
     return(
         <>
             <main>
+
+                {/* section for founders friday */}
             <section>
                 <div className="container happen-container">
                     <div className="row happen-row">
-                        <div className="col-10 col-lg-5 happen">
+                        <div className="col-10 col-lg-5 happen animate-on-scroll slide-left">
                             <span>Founders Friday</span>
                             <h2>What Happens At Founders Friday </h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac rutrum felis. Nulla nibh lorem, facilisis vel est at, vehicula dignissim lacus. Cras sagittis imperdiet dolor, eget accumsan leo suscipit id. Maecenas ut ante quis quam lobortis consequat eu id turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
@@ -54,10 +60,11 @@ export default function Main(){
                 </div>
             </section>
 
+            {/* section for sponsors */}
             <section>
                 <div className="container form-content-container">
                     <span>Sponsor The Next Friday</span>
-                    <div className="row form-content-row">
+                    <div className="row form-content-row animate-on-scroll slide-left">
                         <h2>Why Sponsor Founders Friday?</h2>
                         <div className="col-10 col-lg-6 rounded-col">
                             <div className='d-flex gap-3 rounded-text'>
@@ -124,11 +131,11 @@ export default function Main(){
                     </div>
                 </div>
             </section>
-
+                {/* section for kaduna event */}
             <section>
                 <div className="container-fluid kaduna-container">
                     <div className="row px-3 kaduna-row">
-                        <div className="col-10 col-lg-6 kd-text">
+                        <div className="col-10 col-lg-6 kd-text animate-on-scroll slide-left">
                             <span>Founders Friday is coming to</span>
                             <h2>Kaduna </h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac rutrum felis. Nulla nibh lorem, facilisis vel est at, vehicula dignissim lacus. Cras sagittis imperdiet dolor, eget accumsan leo suscipit id. Maecenas ut ante quis quam lobortis consequat eu id turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
@@ -145,10 +152,10 @@ export default function Main(){
                     </div>
                 </div>
             </section>
-
+            {/* section for community */}
             <section>
                 <div className="container rounded-image-container">
-                    <div className="row rounded-image-row">
+                    <div className="row rounded-image-row animate-on-scroll slide-left">
                         <div className="col-10 col-lg-10 rounded-image-col">
                             <h3>Register And Be Part of Our Community</h3>
                             <p>Join our community of over 1000+ founders, developers, and tech junkies in general.Be inspired by people who live to inspire!</p>
@@ -160,6 +167,7 @@ export default function Main(){
                     </div>
                 </div>
             </section>
+            {/* section for every friday */}
             <section>
                 <div className="container f-container">
                     <div className="row g-3 f-row" >
@@ -168,7 +176,7 @@ export default function Main(){
                                 <img src={Images.F_FRIDAY} alt="" />
                             </div>
                         </div>
-                        <div className="col-10 col-lg-6 f-friday-text">
+                        <div className="col-10 col-lg-6 f-friday-text animate-on-scroll slide-right">
                             <p>At Founder’s Friday, Every Friday Is a Learning Experience! <br />
                             <span>Join us in our mission to transform ideas into impact and shape the future of Nigeria’s startup landscape.</span></p>
 
@@ -180,7 +188,7 @@ export default function Main(){
                     </div>
                 </div>
             </section>
-
+            {/* Section for slide */}
             <section>
                 <div className="container slides-container">
                     <div className="row gap-3 slides-row">
@@ -190,7 +198,7 @@ export default function Main(){
                             <img src={Images.ARROW_LEFT_BLACK} alt="" />
                             <img src={Images.ARROW_RIGHT_BLACK} alt="" />
                         </div>
-                        <div className="col-10 col-lg-3 slides">
+                        <div className="col-10 col-lg-3 slides animate-on-scroll slide-left">
                             <div className='slide-img'>
                                 <img src={Images.PERSON} alt="" />
                                 <div className='slide-img-text'>
@@ -200,7 +208,7 @@ export default function Main(){
                             </div>
 
                         </div>
-                        <div className="col-10 col-lg-3 slides">
+                        <div className="col-10 col-lg-3 slides animate-on-scroll slide-left">
                         <div className='slide-img'>
                                 <img src={Images.PERSON} alt="" />
                                 <div className='slide-img-text'>
@@ -210,7 +218,7 @@ export default function Main(){
                             </div>
 
                         </div>
-                        <div className="col-10 col-lg-3 slides">
+                        <div className="col-10 col-lg-3 slides animate-on-scroll slide-left">
                         <div className='slide-img'>
                                 <img src={Images.PERSON} alt="" />
                                 <div className='slide-img-text'>
@@ -227,7 +235,7 @@ export default function Main(){
             {/* FAQ Section */}
             <section>
                 <div className="container faq-container">
-                    <div className="row faq-row">
+                    <div className="row faq-row animate-on-scroll slide-left">
                         <h4>FAQs</h4>
                         <div className="col-10 col-lg-6 faqs">
                             <p>Lorem ipsum dolor sit amet, consectetur adi elit.<img src={Images.DROPDOWN} alt="" /></p>

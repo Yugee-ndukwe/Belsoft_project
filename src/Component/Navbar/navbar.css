@@ -39,9 +39,8 @@ text-decoration-skip-ink: none;
 
 }
 
-.active{
-    color: #8300FF;
-
+.nav-item.active {
+    color: #8300FF !important; 
 }
 
 .nav div{

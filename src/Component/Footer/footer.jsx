@@ -2,10 +2,38 @@
 import '../Footer/footer.css'
 import images from '../../Assets/images';
 import {Link} from 'react-router-dom';
+import { useState,useEffect } from 'react';
 
 
 
 export default function Footer(){
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.classList.contains('slide-left')) {
+                            entry.target.classList.add('animate__animated', 'animate__slideInLeft');
+                        } else if (entry.target.classList.contains('slide-right')) {
+                            entry.target.classList.add('animate__animated', 'animate__slideInRight');
+                        }
+                        // Stop observing the element after the animation is applied
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.1 } // Trigger when 10% of the element is visible
+        );
+
+        // Select all elements to animate
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        animateElements.forEach((element) => observer.observe(element));
+
+        // Cleanup the observer on component unmount
+        return () => observer.disconnect();
+    }, []);
+    const [isActive, setIsActive] = useState('home')
     return(
         <>
         <hr />
@@ -14,7 +42,7 @@ export default function Footer(){
                             <img src={images.FOOTER_LOGO} alt="" />
                             <p></p>
                         </div>
-                <div className="row footer-row">
+                <div className="row footer-row animate-on-scroll slide-left">
                     {/* <div className="col-10 col-lg-3 footer-logo-col">
                         <div className="footer-logo">
                             <img src={images.FOOTER_LOGO} alt="" />
@@ -36,10 +64,15 @@ export default function Footer(){
                         </div>
 
                         <div className=" d-flex gap-4 px-2 flex-wrap links">
-                            <a href="/">Home</a>
-                            <a href="/">About</a>
-                            <a href="/">Gallery</a>
-                            <a href="/">Contact Us</a>
+                            <a href="/" 
+                            className={` footer-link ${isActive === 'home' ? 'active' : '' }`}
+                            onClick={() => {setIsActive('home')}}>Home</a>
+                            <a href="/about" className={` footer-link ${isActive === 'about' ? 'active' : '' }`}
+                            onClick={() => {setIsActive('about')}}>About</a>
+                            <a href="/gallery"  className={` footer-link ${isActive === 'gallery' ? 'active' : '' }`}
+                            onClick={() => {setIsActive('gallery')}}>Gallery</a>
+                            <a href="/contactUs"  className={` footer-link ${isActive === 'contactUs' ? 'active' : '' }`}
+                            onClick={() => {setIsActive('contactUs')}}>Contact Us</a>
                         
                         </div>
 

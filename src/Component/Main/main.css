@@ -2,22 +2,6 @@ section{
     width: 100%;
 }
 
-/* Initial hidden state */
-.animate-from-left, .animate-from-right {
-    opacity: 0;
-    transform: translateX(-100%); /* For left animation */
-    transition: all 0.5s ease;
-  }
-  
-  .animate-from-right {
-    transform: translateX(100%); /* For right animation */
-  }
-  
-  /* Animation when in view */
-  .in-view {
-    opacity: 1;
-    transform: translateX(0);
-  }
   
 .happen-container{
     width: 100%;
@@ -29,7 +13,6 @@ section{
     background-repeat: no-repeat;
     background-size: contain;
     background-position: top 200px left;
-    margin-bottom: 20px;
     
 }
 
@@ -406,6 +389,9 @@ text-decoration-skip-ink: none;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .kaduna-row{
@@ -614,20 +600,6 @@ text-decoration-skip-ink: none;
 
     }
 
-    .f-friday-text{
-        animation:  SlideInRight 0.5s ease-in;
-    }
-
-    @keyframes SlideInRight {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
 
     .f-friday-text p{
         font-family: Montserrat;
@@ -846,18 +818,7 @@ text-decoration-skip-ink: none;
     }
 
 @media(min-width: 719px){
-    .happen-container{
-        /* position: relative; */
-        /* bottom: 20%; */
-        /* z-index: 1; */
-        
-    }
 
-    .happen-row{
-        /* position: relative;
-        z-index: 1; */
-    
-    }
 }
 
 
@@ -869,8 +830,10 @@ text-decoration-skip-ink: none;
 
     
         .rounded-text div {
-            width: 350px; /* Adjust width */
-            height: 350px; /* Adjust height */
+            width: 500px;
+            max-width: 100%;
+            /* width: 350px;  */
+            height: 250px; /* Adjust height */
             padding: 5px;
             border-radius: 10px; /* Ensures it remains circular */
         }
