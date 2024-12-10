@@ -1,5 +1,7 @@
 body {
   background: var(--Base-Base-White, #FDF7FF) !important;
+  /* width: 100%; */
+  /* overflow: hidden; */
 
 }
 

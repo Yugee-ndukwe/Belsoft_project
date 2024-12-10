@@ -13,6 +13,15 @@ z-index: 1;
 
 }
 
+.nav-logo{
+font-size: 28px;
+font-weight: 700;
+/* line-height: 33.6px; */
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+
+}
+
 .nav-logo img{
     width: 81.14px;
 height: 80.63px;
