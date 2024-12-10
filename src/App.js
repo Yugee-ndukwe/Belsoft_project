@@ -1,3 +1,4 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './Component/Home/home';
 import MyNav from './Component/Navbar/navbar';
 import logo from './logo.svg';
@@ -6,7 +7,11 @@ import logo from './logo.svg';
 function App() {
   return (
     <>
-    <Home/>
+   <BrowserRouter>
+    <Routes>
+      <Route path='/' element={ <Home/>}/>
+    </Routes>
+   </BrowserRouter>
       {/* <MyNav/> */}
 
     </>

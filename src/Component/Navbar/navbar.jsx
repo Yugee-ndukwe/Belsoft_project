@@ -4,9 +4,11 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import LOGO from '../../Assets/images';
 import right from '../../Assets/images';
+import { useState } from 'react';
 
 
 export default function MyNav(){
+    const [isActive, setIsActive] = useState('')
     return(
         <>
            <Navbar expand="lg" className=" navbar">
@@ -15,7 +17,7 @@ export default function MyNav(){
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                      <Navbar.Collapse id="basic-navbar-nav">
                          <Nav className="ms-auto nav">
-                            <Nav.Link href="#home" className='nav-item active'>Home</Nav.Link>
+                            <Nav.Link href="/" className='nav-item active'>Home</Nav.Link>
                             <Nav.Link href="#link">About</Nav.Link>
                             <Nav.Link href="#link">Gallery</Nav.Link>
 

@@ -126,7 +126,7 @@ export default function Main(){
             </section>
 
             <section>
-                <div className="container kaduna-container">
+                <div className="container-fluid kaduna-container">
                     <div className="row px-3 kaduna-row">
                         <div className="col-10 col-lg-6 kd-text">
                             <span>Founders Friday is coming to</span>
@@ -137,7 +137,7 @@ export default function Main(){
                             </div>
                         </div>
                         <div className="col-10 col-lg-6">
-                            <div>
+                            <div className='kd-logo'>
                                 <img src={Images.LOGO_KD} alt="" />
                             </div>
                         </div>

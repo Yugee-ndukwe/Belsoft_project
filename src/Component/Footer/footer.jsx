@@ -28,7 +28,7 @@ export default function Footer(){
                         </div>
                     </div>
                     <hr />
-                    <div className="col-10 col-lg-10 d-flex justify-content-between align-items-center flex-wrap py-4">
+                    <div className="col-10 col-lg-10 d-flex justify-content-between align-items-center gap-5 py-4">
                         <div className="socials">
                             <img src={images.FB} alt="" />
                             <img src={images.IG} alt="" />

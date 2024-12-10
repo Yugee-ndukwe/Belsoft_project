@@ -68,7 +68,7 @@ export default function Hero(){
 
          <section>
             <div className="container founders-section">
-                <div className="row">
+                <div className="row founders-row-section" >
                 <div className="col-10 col-lg-5">
                             <div className='section-image'>
                              <img className='parts' src={images.FOUNDERS} alt="" />
@@ -89,7 +89,7 @@ export default function Hero(){
 
                             <p>Born from the vibrant startup ecosystem of Abuja, we recognized the need for a consistent, high-quality networking platform where founders, innovators, and tech enthusiasts could connect, share ideas, and foster collaboration.</p>
                             
-                            <div className="d-flex gap-3  button-row">
+                            <div className="d-flex gap-4  button-row">
                                 <button className='btn-arrow'> Register <img src={images.ARROW_RIGHT_LIGHT} alt="" /></button>
                                 <button className='btn-bag'>Donate <img src={images.MONEY_BAG} alt="" /></button>
 
